@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    redirect '/posts' 
+    redirect '/posts'
   end
 
   #CREATE - NEW action
@@ -25,23 +25,23 @@ class ApplicationController < Sinatra::Base
   #READ - INDEX action for all instances
   get '/posts' do
     @posts = Post.all
-    erb :'index.html'  
+    erb :'index.html'
   end
 
   #READ - SHOW action for specific instance
-  get '/posts/:id' do 
+  get '/posts/:id' do
     @post = Post.find(params[:id])
     erb :'show.html'
   end
 
   #UPDATE - EDIT action
   get '/posts/:id/edit' do
-    @post = Post.find(params[:id]) 
+    @post = Post.find(params[:id])
     erb :'edit.html'
   end
 
   #UPDATE - UPDATE action
-  patch '/posts/:id' do 
+  patch '/posts/:id' do
     @post = Post.find(params[:id])
     @post.name = params[:name]
     @post.content = params[:content]
